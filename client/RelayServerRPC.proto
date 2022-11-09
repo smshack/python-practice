@@ -1,0 +1,19 @@
+syntax="proto3";
+
+package RelayServer;
+
+service RelayServer {
+    rpc STT(stream reqSpeech) returns (resText) {}
+}
+
+message reqSpeech{
+	oneof streamingRequest {
+		bytes audioContent=1;
+	}
+}
+
+message resText{
+	int32 resultCd=1;
+	string text=2;
+}
+

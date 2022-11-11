@@ -1,22 +1,23 @@
-import turtle as t
 import random
-# 터틀 클래스 생성 변수에 저장 거북이 생성 기본으로 가운데 생성됨
-tim = t.Turtle()
+import turtle
 
-color = ["red","orange",'yellow','green',"blue",'white']
+walk = turtle.Turtle()
 
-def draw_shape(num_sides):
-    angle = 360/num_sides
-    for _ in range(num_sides):
-        tim.forward(100)
-        tim.right(angle)
+walk.hideturtle()
+walk.pensize(15)
+walk.speed(0)
 
-for shape_side_n in range(3,11):
-    tim.color(random.choice(color))
-    draw_shape(shape_side_n)
+def random_color():
+    turtle.colormode(255)
+    R = random.randint(0, 255)
+    G = random.randint(0, 255)
+    B = random.randint(0, 255)
+    walk.color(R, G, B)
 
-# 창이 켜짐
-screan = t.Screen()
+def turn():
+    return random.choice([0, 90, 180, 270])
 
-# 창을 클릭했을 경우 꺼짐
-screan.exitonclick()
+while True:
+    random_color()
+    walk.forward(40)
+    walk.setheading(turn())
